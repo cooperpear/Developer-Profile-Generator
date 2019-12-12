@@ -47,11 +47,16 @@ function generateHTML(answers) {
   <div class="jumbotron jumbotron-fluid">
   <div class="container" id = "filecontainer">
     <h1 class="display-4">Hi! My name is ${answers.data.name}</h1>
-    <p class="lead">I am from ${answers.location}.</p>
-    <h3>Example heading <span class="badge badge-secondary">Contact Me</span></h3>
+    <p class="lead">I am from ${answers.data.location}.</p>
+    <h3>Developer Profile Generator <span class="badge badge-secondary">Contact Me at ${answers.data.email}</span></h3>
     <ul class="list-group">
       <li class="list-group-item">My GitHub username is ${answers.data.login}</li>
-      <li class="list-group-item">LinkedIn: ${answers.linkedin}</li>
+      <li class="list-group-item">Bio: ${answers.data.bio}</li>
+      <li class="list-group-item">Public repositories: ${answers.data.public_repos}</li>
+      <li class="list-group-item">followers: ${answers.data.followers}</li>
+      <li class="list-group-item">Bio: ${answers.data.bio}</li>
+      <li class="list-group-item">Stars: ${answers.data.starred_url}</li>
+      <li class="list-group-item">following: ${answers.data.following}</li>
     </ul>
 
 <div id= "image">
@@ -82,7 +87,7 @@ promptUser()
   })
   .then(function (html) {
     console.log("Successfully wrote to index.html");
-    const htmlfile = fs.readFileSync("./index.html", "utf8")
+    const htmlfile = fs.readFileSync("index.html", "utf8")
     pdf.create(htmlfile, options).toFile("index.pdf", function (err, res) {
       if (err) return console.log(err);
       console.log("successfully wrote to pdf file");
