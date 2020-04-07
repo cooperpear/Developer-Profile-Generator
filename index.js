@@ -73,12 +73,12 @@ function generateHTML(answers) {
 
 promptUser()
   .then(function (answers) {
- color = answers.color;
+    color = answers.color;
     return axios.get(`https://api.github.com/users/${answers.github}`)
   })
   .then(function (data) {
     console.log("Successfully wrote to index.html", data.data);
-    return({ data:data.data,color:color})
+    return ({ data: data.data, color: color })
 
   })
   .then(function (answers) {
